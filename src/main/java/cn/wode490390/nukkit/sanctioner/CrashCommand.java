@@ -16,7 +16,7 @@ public class CrashCommand extends Command implements PluginIdentifiableCommand {
     private final Plugin plugin;
 
     public CrashCommand(Plugin plugin) {
-        super("crash", "Crashs the player's client", "/crash <player>");
+        super("crash", "플레이어의 클라이언트를 크래쉬 시킵니다.", "/crash <플레이어>");
         this.setPermission("sanctioner.crash");
         this.getCommandParameters().clear();
         this.addCommandParameters("default", new CommandParameter[]{
@@ -40,9 +40,9 @@ public class CrashCommand extends Command implements PluginIdentifiableCommand {
                 pk.mode = MovePlayerPacket.MODE_TELEPORT;
                 player.dataPacket(pk);
 
-                Command.broadcastCommandMessage(sender, TextFormat.YELLOW + "Successfully crashed " + args[0] + "'s client");
+                Command.broadcastCommandMessage(sender, TextFormat.YELLOW + "대상 플레이어 클라이언트를 크래쉬 시켰습니다. " + args[0] + "'s client");
             } else {
-                sender.sendMessage("No targets matched selector");
+                sender.sendMessage("알 수 없는 유저입니다.");
             }
         } else {
             sender.sendMessage(new TranslationContainer("commands.generic.usage", this.getUsage()));
